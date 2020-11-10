@@ -14,10 +14,14 @@ const { requestLogger, errorLogger } = require('./middlewares/logger');
 const ProperTyError = require('./utils/propertyError');
 const rateLimiter = require('./utils/rateLimiter');
 
-const { MONGO_HOST = 'localhost:27017', MONGO_DB_NAME = 'newsexplorer' } = process.env;
+const {
+  MONGO_HOST = 'mongodb://localhost',
+  MONGO_PORT = 27017,
+  MONGO_DB_NAME = 'newsexplorer',
+} = process.env;
 const app = express();
 
-mongoose.connect(`mongodb://${MONGO_HOST}/${MONGO_DB_NAME}`, {
+mongoose.connect(`${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB_NAME}`, {
   useNewUrlParser: true,
   useCreateIndex: true,
   useFindAndModify: false,
