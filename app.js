@@ -18,6 +18,7 @@ const {
   MONGO_HOST = 'mongodb://localhost',
   MONGO_PORT = 27017,
   MONGO_DB_NAME = 'newsexplorer',
+  PORT = 3000,
 } = process.env;
 const app = express();
 
@@ -28,7 +29,6 @@ mongoose.connect(`${MONGO_HOST}:${MONGO_PORT}/${MONGO_DB_NAME}`, {
   useUnifiedTopology: true,
 });
 
-const { PORT = 3000 } = process.env;
 const loginValidateSchema = {
   body: Joi.object().keys({
     email: Joi.string().required().email(),
