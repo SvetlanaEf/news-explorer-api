@@ -8,7 +8,7 @@ const { JWT_SECRET = 'local-jwt-key' } = process.env;
 module.exports.getMe = (req, res, next) => {
   User.findOne({ _id: req.user._id })
     .orFail(() => new PropertyError('NotFound', 'Пользователь не найден'))
-    .then((user) => res.send({ data: { name: user.name, email: user.email } }))
+    .then((user) => res.send({ data: { _id: user._id, name: user.name, email: user.email } }))
     .catch(next);
 };
 

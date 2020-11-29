@@ -6,7 +6,7 @@ const controller = require('../controllers/articles');
 
 const linkValidate = () => Joi.string().required().custom((value, helpers) => {
   if (!isURL(value)) {
-    return helpers.message({ custom: 'Некорректный идентификатор' });
+    return helpers.message({ custom: 'Некорректная ссылка на статью' });
   }
 
   return value;
